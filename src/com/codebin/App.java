@@ -4,23 +4,29 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class App {
+public class App extends JFrame {
    private JButton button1;
    private JPanel panelMain;
-   public App() {
+   private JTextField a;
+   private JTextField b;
+
+   public App(){
       button1.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent actionEvent) {
-            JOptionPane.showMessageDialog(null,"Hello World");
+            Integer aI = Integer.valueOf(a.getText());
+            Integer bI = Integer.valueOf(b.getText());
+            JOptionPane.showMessageDialog(null,aI*bI);
          }
       });
    }
 
    public static void main(String[] args) {
-      JFrame frame = new JFrame("App");
-      frame.setContentPane(new App().panelMain);
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      frame.pack();
-      frame.setVisible(true);
+      App h = new App();
+      h.setContentPane(h.panelMain);
+      h.setTitle("hola");
+      h.setSize(400,300);
+      h.setVisible(true);
+      h.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    }
 }
