@@ -9,16 +9,22 @@ public class App extends JFrame {
    private JPanel panelMain;
    private JTextField a;
    private JTextField b;
+   private JComboBox comboBox1;
+   private JComboBox comboBox2;
 
    public App(){
-      button1.addActionListener(new ActionListener() {
+
+      String s [] = {"dolar","euro","peso"};
+      comboBox1.setModel(new DefaultComboBoxModel(s));
+      comboBox2.setModel(new DefaultComboBoxModel(s));
+      /*button1.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent actionEvent) {
             Integer aI = Integer.valueOf(a.getText());
             Integer bI = Integer.valueOf(b.getText());
             JOptionPane.showMessageDialog(null,aI*bI);
          }
-      });
+      });*/
    }
 
    public static void main(String[] args) {
@@ -29,4 +35,5 @@ public class App extends JFrame {
       h.setVisible(true);
       h.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    }
+
 }
