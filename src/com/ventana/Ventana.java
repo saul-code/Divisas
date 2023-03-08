@@ -1,13 +1,12 @@
 /**
  * Ventana.java
- * Esta ventana es la que se encarga de mostrar la interfaz gráfica de usuario
- * Y nos mostrara dos JComboBox y un boton para hacer un cambio de divisas
+ * Esta clase de java es un programa para calcular el cambio de divisas.
  */
 package com.ventana;
 
 import javax.swing.*;
 import java.awt.event.*;
-//Importa la clase convertidorPanel
+import java.util.Locale;
 
 public class Ventana extends JFrame {
 
@@ -17,16 +16,16 @@ public class Ventana extends JFrame {
       JComboBox comboBox2 = new JComboBox();
       JButton button = new JButton("convertir");
       JTextField txt = new JTextField();
-      ConvertidorPanel panelMain = new ConvertidorPanel(comboBox1,comboBox2,button,txt);
+      ConvertidorPanel panelMain = new ConvertidorPanel(comboBox2,comboBox1,button,txt);
 
       button.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent actionEvent) {
-            String seleccionA=  comboBox1.getSelectedItem().toString();
-            String seleccionB=  comboBox2.getSelectedItem().toString();
+            String seleccionA=  comboBox1.getSelectedItem().toString().toUpperCase();
+            String seleccionB=  comboBox2.getSelectedItem().toString().toUpperCase();
             Double txt1 = Double.valueOf(txt.getText());
-            double resultado = Controlador.dolarApeso(txt1);
-            System.out.println(resultado);
+            Double resultado = DivisasControl.convierte(DivisasControl.Divisas.valueOf(seleccionA),DivisasControl.Divisas.valueOf(seleccionB),txt1);
+            panelMain.setResultado(String.valueOf(resultado));
             System.out.format("De: %s, a: %s", seleccionA, seleccionB);
          }
       });
